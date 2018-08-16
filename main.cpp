@@ -7,19 +7,19 @@
 
 
 int main(int argc, char* argv[]) {
-    lcg(15);
-    return 0;
+  lcg(15);
+  return 0;
 }
 
 int lcg(int x) {    // Linear congruential generator
-    unsigned long randomNumber;
-    unsigned long seed = 0;
+  unsigned long randomNumber;
+  unsigned long seed = 0;
 
-    for (int i = 0; i < x; i++) {
-        randomNumber = (a * seed + c) % m;
-        seed = randomNumber;
-        std::cout << (randomNumber) << std::endl;
-    }
- 
-    return 0;
+  for (int i = 0; i < x; i++) {
+    randomNumber = (a * seed + c) % m;
+    seed = randomNumber;
+    std::cout << (randomNumber) << std::endl;
+  }
+
+  return 0;
 }
