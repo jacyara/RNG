@@ -5,11 +5,14 @@
 #include "main.hpp"
 
 int main() {
-  printf("Linear congruential generator:\n");
-  lcg(10);
+  // printf("Linear congruential generator:\n");
+  // lcg(10);
 
-  printf("Fibonacci linear-feedback shift register:\n");
-  flfsr(10);
+  // printf("Fibonacci linear-feedback shift register:\n");
+  // flfsr(10);
+
+  printf("Middle square Weyl sequence generator:\n");
+  msws(10);
 
   return 0;
 }
@@ -57,6 +60,14 @@ int flfsr(int x) {  // Fibonacci linear-feedback shift register
 }
 
 int msws(int x) {   // Middle square Weyl sequence generator
+  uint64_t y = 0, w = 0, s = 0xb5ad4eceda1ce2a9;
+
+  for (int i = 1; i <= x; i++) {
+    y *= y; 
+    y += (w += s); 
+    y = (y>>32) | (y<<32);
+    printf("%u (%u)\n", y, i);
+  }
 
   return 0;
 }
