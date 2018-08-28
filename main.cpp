@@ -14,8 +14,11 @@ int main() {
   // printf("Middle square Weyl sequence generator:\n");
   // msws(10);
 
-  printf("XORshift:\n");
-  xorshift(10);
+  printf("Multiply-with-carry:\n");
+  mwc(10);
+
+  // printf("XORshift:\n");
+  // xorshift(10);
 
   return 0;
 }
@@ -75,6 +78,24 @@ int msws(int x) {     // Middle square Weyl sequence generator
   return 0;
 }
 
+int mwc(int x) {      // Multiply-with-carry generator
+  int base = 10;
+  int mult = 7;
+
+  int r = 1, c[x], y[x];
+  c[0] = 1;
+  y[0] = 0;
+  
+  for (int i = 1; i < x; i++)
+  {
+      y[i] = (mult * y[i - r] + c[i - 1]) % base;
+      c[i] = (mult * y[i - r] + c[i - 1]) / base;
+      printf("%d (%u)\n", y[i], i);
+  }
+
+  return 0;
+}
+
 int xorshift(int x) { // XORshift
   uint32_t seed = 548787455;
   int i = 0;
@@ -86,7 +107,7 @@ int xorshift(int x) { // XORshift
     temp ^= temp << 5;
     seed = temp;
 
-    printf("%u\n", temp);
+    printf("%u (%u)\n", temp, i);
   }
 
   return 0;
