@@ -4,35 +4,35 @@
 
 #include "main.hpp"
 
-#define m 2147483648    // Parameters used by GCC, as seen in:
-#define a 1103515245    // https://en.wikipedia.org/wiki/Linear_congruential_generator
-#define c 12345
+int main() {
+  printf("Linear congruential generator:\n");
+  lcg(10);
 
-
-int main(int argc, char* argv[]) {
-  // std::cout << "Linear congruential generator:" << std::endl;
-  // lcg(10);
-
-  std::cout << "Fibonacci linear-feedback shift register:" << std::endl;
+  printf("Fibonacci linear-feedback shift register:\n");
   flfsr(10);
 
   return 0;
 }
 
 int lcg(int x) {    // Linear congruential generator
-  unsigned long randomNumber;
-  unsigned long seed = 0;
+  // Values used in GCC
+  const uint64_t m = 2147483648;
+  const uint64_t a = 1103515245;
+  const uint64_t c = 12345;
 
-  for (int i = 0; i < x; i++) {
+  uint64_t randomNumber;
+  uint64_t seed = 0;
+
+  for (int i = 1; i <= x; i++) {
     randomNumber = (a * seed + c) % m;
     seed = randomNumber;
-    printf("%d\n", randomNumber);
+    printf("%u (%u)\n", randomNumber, i);
   }
 
   return 0;
 }
 
-int flfsr(int x) {   // Fibonacci linear-feedback shift register
+int flfsr(int x) {  // Fibonacci linear-feedback shift register
   // Any value different than zero
   uint16_t initial_state = 0x7f2a;  
   uint16_t lfsr = initial_state;
@@ -50,8 +50,13 @@ int flfsr(int x) {   // Fibonacci linear-feedback shift register
 
       counter++;
 
-      printf("%d (%d)\n", lfsr, counter);
+      printf("%u (%u)\n", lfsr, counter);
   } while (counter < x && lfsr != initial_state);
+
+  return 0;
+}
+
+int msws(int x) {   // Middle square Weyl sequence generator
 
   return 0;
 }
