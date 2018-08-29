@@ -5,32 +5,31 @@
  */
 
 /* 
- * File:   SamplerMyImpl1.h
+ * File:   SamplerLCG.h
  * Author: cancian
  *
  * Created on 23 de Agosto de 2018, 13:08
  */
 
-#ifndef SAMPLERMYIMPL1_H
-#define SAMPLERMYIMPL1_H
+#ifndef SamplerLCG_H
+#define SamplerLCG_H
 
 #include <cstdint>
 #include "Sampler_if.h"
 
-class SamplerMyImpl1 : public Sampler_if {
+class SamplerLCG : public Sampler_if {
 public:
+
 	struct MyRNG_Parameters : public RNG_Parameters {
-	// struct MyRNG_Parameters {
-		// public:
 		uint64_t seed;
 		uint64_t modulus;
 		uint64_t multiplier;
 		uint64_t increment;
 	};
 public:
-	SamplerMyImpl1();
-	SamplerMyImpl1(const SamplerMyImpl1& orig);
-	~SamplerMyImpl1();
+	SamplerLCG();
+	SamplerLCG(const SamplerLCG& orig);
+	~SamplerLCG();
 public: // probability distributions
 	double random();
 	double sampleUniform(double min, double max);
@@ -44,11 +43,12 @@ public: // probability distributions
 	double sampleTriangular(double min, double mode, double max);
 	double sampleDiscrete(double value, double acumProb, ...);
 public:
-	void setRNGparameters(RNG_Parameters param);
-	RNG_Parameters getRNGparameters() const;
+	void setRNGparameters(RNG_Parameters* param);
+	RNG_Parameters* getRNGparameters() const;
 private:
-	MyRNG_Parameters myParams;
+	MyRNG_Parameters* _param = new MyRNG_Parameters();
+
 };
 
-#endif /* SAMPLERMYIMPL1_H */
+#endif /* SamplerLCG_H */
 
