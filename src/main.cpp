@@ -5,20 +5,20 @@
 #include "main.hpp"
 
 int main() {
-  // printf("Fibonacci linear-feedback shift register:\n");
-  // flfsr(10);
+  printf("Fibonacci linear-feedback shift register:\n");
+  flfsr(10);
 
-  // printf("Linear congruential generator:\n");
-  // lcg(10);
+  printf("Linear congruential generator:\n");
+  lcg(10);
 
-  // printf("Middle square Weyl sequence generator:\n");
-  // msws(10);
+  printf("Middle square Weyl sequence generator:\n");
+  msws(10);
 
   printf("Multiply-with-carry:\n");
   mwc(10);
 
-  // printf("XORshift:\n");
-  // xorshift(10);
+  printf("XORshift:\n");
+  xorshift(10);
 
   return 0;
 }
