@@ -1,5 +1,6 @@
 #include "SamplerMyImpl1.h"
 #include "SamplerMyImpl1.cpp"
+#include <cstdio>
 
 int main() {
 	// SamplerMyImpl1::MyRNG_Parameters params = { 0, 2147483648, 1103515245, 12345}; // seed, modulus, multiplier, increment
@@ -17,9 +18,9 @@ int main() {
 
 	sampler.setRNGparameters(params);
 
-	sampler.random();
-	sampler.random();
-	sampler.random();
+	printf("%.0f\n",sampler.random());
+	printf("%.0f\n",sampler.random());
+	printf("%.0f\n",sampler.random());
 
 	return 0;
 }

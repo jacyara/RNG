@@ -12,7 +12,6 @@
  */
 
 #include "SamplerMyImpl1.h"
-#include <cstdio>
 #include <cstdint>
 
 SamplerMyImpl1::SamplerMyImpl1() {
@@ -38,9 +37,8 @@ double SamplerMyImpl1::random() {
 
 	randomNumber = (myParams.multiplier * myParams.seed + myParams.increment) % myParams.modulus;
     myParams.seed = randomNumber;
-    printf("%u\n", randomNumber);
 
-    return 0;
+    return (double)randomNumber;
 }
 
 double SamplerMyImpl1::sampleUniform(double min, double max) {
