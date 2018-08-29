@@ -1,5 +1,6 @@
 #include "SamplerLCG.cpp"
 #include "SamplerLFSR.cpp"
+#include "SamplerMSWS.cpp"
 
 #include <cstdio>
 
@@ -19,13 +20,25 @@ int main() {
 	printf("%.0f\n",sampler.random()); */
 
 
-	SamplerLFSR::MyRNG_Parameters* params = new SamplerLFSR::MyRNG_Parameters();
+	/* SamplerLFSR::MyRNG_Parameters* params = new SamplerLFSR::MyRNG_Parameters();
 	params->seed = 0x7f2a;
 
 	SamplerLFSR sampler;
 	sampler.setRNGparameters(params);
 
 	printf("--- LFSR ---\n");
+	printf("%.0f\n",sampler.random());
+	printf("%.0f\n",sampler.random());
+	printf("%.0f\n",sampler.random()); */
+
+
+	SamplerMSWS::MyRNG_Parameters* params = new SamplerMSWS::MyRNG_Parameters();
+	params->seed = 0xb5ad4eceda1ce2a9;
+
+	SamplerMSWS sampler;
+	sampler.setRNGparameters(params);
+
+	printf("--- MSWS ---\n");
 	printf("%.0f\n",sampler.random());
 	printf("%.0f\n",sampler.random());
 	printf("%.0f\n",sampler.random());
