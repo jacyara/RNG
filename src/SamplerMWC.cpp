@@ -15,8 +15,8 @@
 #include <iostream> //remove
 
 SamplerMWC::SamplerMWC() {
-	c[0] = 1;
-	y[0] = 0;
+	c.push_back(1);
+	y.push_back(0);
 }
 
 SamplerMWC::SamplerMWC(const SamplerMWC& orig) {
@@ -26,8 +26,8 @@ SamplerMWC::~SamplerMWC() {
 }
 
 double SamplerMWC::random() {
-	y[counter] = (_param->mult * y[counter - r] + c[counter - 1]) % _param->base;
-  c[counter] = (_param->mult * y[counter - r] + c[counter - 1]) / _param->base;
+	y.push_back((_param->mult * y[counter - r] + c[counter - 1]) % _param->base);
+  c.push_back((_param->mult * y[counter - r] + c[counter - 1]) / _param->base);
 
 	counter = counter + 1;
 

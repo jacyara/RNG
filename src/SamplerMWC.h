@@ -46,10 +46,8 @@ public:
 	RNG_Parameters* getRNGparameters() const;
 private:
 	MyRNG_Parameters* _param = new MyRNG_Parameters();
-	int y[999];
-	int c[999];
-	// std::vector<int> y;
-	// std::vector<int> c;
+	std::vector<int> y;
+	std::vector<int> c;
 	int counter = 1;
 	int r = 1;
 };

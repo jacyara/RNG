@@ -75,6 +75,6 @@ int main() {
 	printf("%.0f\n",sampler.random()); 
 
 
-
+	
 	return 0;
 }
