@@ -5,29 +5,30 @@
  */
 
 /* 
- * File:   SamplerMyImpl1.h
+ * File:   SamplerMWC.h
  * Author: cancian
  *
  * Created on 23 de Agosto de 2018, 13:08
  */
 
-#ifndef SAMPLERMYIMPL1_H
-#define SAMPLERMYIMPL1_H
+#ifndef SamplerMWC_H
+#define SamplerMWC_H
 
+#include <cstdint>
+#include <vector>
 #include "Sampler_if.h"
 
-class SamplerMyImpl1 : public Sampler_if {
+class SamplerMWC : public Sampler_if {
 public:
 
 	struct MyRNG_Parameters : public RNG_Parameters {
-		unsigned int seed;
-		unsigned int module;
-		unsigned int multiplier;
+		uint64_t base;
+		uint64_t mult;
 	};
 public:
-	SamplerMyImpl1();
-	SamplerMyImpl1(const SamplerMyImpl1& orig);
-	~SamplerMyImpl1();
+	SamplerMWC();
+	SamplerMWC(const SamplerMWC& orig);
+	~SamplerMWC();
 public: // probability distributions
 	double random();
 	double sampleUniform(double min, double max);
@@ -45,8 +46,13 @@ public:
 	RNG_Parameters* getRNGparameters() const;
 private:
 	MyRNG_Parameters* _param = new MyRNG_Parameters();
-
+	int y[999];
+	int c[999];
+	// std::vector<int> y;
+	// std::vector<int> c;
+	int counter = 1;
+	int r = 1;
 };
 
-#endif /* SAMPLERMYIMPL1_H */
+#endif /* SamplerMWC_H */
 

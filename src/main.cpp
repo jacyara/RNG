@@ -1,6 +1,7 @@
 #include "SamplerLCG.cpp"
 #include "SamplerLFSR.cpp"
 #include "SamplerMSWS.cpp"
+#include "SamplerMWC.cpp"
 #include "SamplerXORSHIFT.cpp"
 
 #include <cstdio>
@@ -60,6 +61,20 @@ int main() {
 	printf("%.0f\n",sampler.random()); */
 	
 	
+
+	SamplerMWC::MyRNG_Parameters* params = new SamplerMWC::MyRNG_Parameters();
+	params->base = 10;
+	params->mult = 7;
+
+	SamplerMWC sampler;
+	sampler.setRNGparameters(params);
+
+	printf("--- MWC ---\n");
+	printf("%.0f\n",sampler.random());
+	printf("%.0f\n",sampler.random());
+	printf("%.0f\n",sampler.random()); 
+
+
 
 	return 0;
 }
